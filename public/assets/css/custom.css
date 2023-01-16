@@ -1,0 +1,9 @@
+.nowrap {
+    white-space: nowrap;
+}
+
+.btn-hover-white:hover {
+    background-color: #fff;
+    border-color: transparent;
+    color: #444;
+}
