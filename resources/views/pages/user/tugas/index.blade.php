@@ -48,7 +48,7 @@
                     <div class="col-md-auto">
                         <div class="row no-gutters mb-4 mt-3">
                             <div class="col-md-auto">
-                                <a href="{{ route('user.tugas.export', ['tanggal' => @$_GET['tanggal']]) }}" target="_blank" class="btn btn-outline-success btn-sm">
+                                <a href="{{ route('user.tugas.export', ['tanggal' => @$_GET['tanggal'], 'show' => @$_GET['show']]) }}" target="_blank" class="btn btn-outline-success btn-sm">
                                     <i class="fas fa-file-export mr-1"></i>Export
                                 </a>
                             </div>
@@ -96,11 +96,8 @@
                                     <td>{{ \Carbon\Carbon::parse($item->berakhir)->isoFormat('DD MMM Y') }}</td>
                                     <td><span class="badge bg-warning text-dark">Sisa {{ $item->sisahari }}</span></td>
                                     <td>
-                                        @if ($item->is_complete == 0)
                                             {!! $item->StatusComplete !!}
-                                        @else
-                                            -
-                                        @endif
+                                       
                                     </td>
                                     <td>{{ $item->tugas }}</td>
                                     @if ($item->is_complete == 0)

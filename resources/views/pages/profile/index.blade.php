@@ -100,14 +100,14 @@
                         <div class="col-md-6">
                             <label class="form-label">Jenis Kelamin</label><br/>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="jenis_kelamin" id="flexRadioDefault1" value="laki-laki" checked>
-                                <label class="form-check-label" for="flexRadioDefault1">
+                                <input class="form-check-input" type="radio" name="jenis_kelamin" id="laki_laki" value="laki-laki" checked>
+                                <label class="form-check-label" for="laki_laki">
                                     Laki - laki
                                 </label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="jenis_kelamin" id="flexRadioDefault2" value="perempuan">
-                                <label class="form-check-label" for="flexRadioDefault2">
+                                <input class="form-check-input" type="radio" name="jenis_kelamin" id="perempuan" value="perempuan">
+                                <label class="form-check-label" for="perempuan">
                                     Perempuan
                                 </label>
                             </div>
@@ -151,14 +151,14 @@
                         <div class="col-md-6">
                             <label class="form-label">Status Perkawinan</label><br/>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="status" id="flexRadioDefault11" value="menikah" checked>
-                                <label class="form-check-label" for="flexRadioDefault1">
+                                <input class="form-check-input" type="radio" name="status" id="menikah" value="menikah" checked>
+                                <label class="form-check-label" for="menikah">
                                     Menikah
                                 </label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="status" id="flexRadioDefault22" value="belum_menikah">
-                                <label class="form-check-label" for="flexRadioDefault2">
+                                <input class="form-check-input" type="radio" name="status" id="belum_menikah" value="belum_menikah">
+                                <label class="form-check-label" for="belum_menikah">
                                     Belum Menikah
                                 </label>
                             </div>

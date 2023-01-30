@@ -52,46 +52,56 @@
            @endif
 
            @if (Auth::user()->role == 'user')
+           @if (empty(Auth::user()->profile))
+
+           <ul class="sidebar-nav">
+            <li class="sidebar-header">
+                <a href="{{ route('profile.index') }}" class="text-white"> Isi Profile untuk menampilkan Menu</a>
+            </li>
+        </ul>
+              
+               @else
                <ul class="sidebar-nav">
-                   <li class="sidebar-header">
-                       Pages
-                   </li>
+                <li class="sidebar-header">
+                    Pages
+                </li>
 
-                   <li class="sidebar-item {{ request()->routeIs('user.dashboard.*') ? 'active' : null }}">
-                       <a class="sidebar-link" href="{{ route('user.dashboard.index') }}">
-                           <i class="align-middle" data-feather="home"></i> <span class="align-middle">Dashboard</span>
-                       </a>
-                   </li>
+                <li class="sidebar-item {{ request()->routeIs('user.dashboard.*') ? 'active' : null }}">
+                    <a class="sidebar-link" href="{{ route('user.dashboard.index') }}">
+                        <i class="align-middle" data-feather="home"></i> <span class="align-middle">Dashboard</span>
+                    </a>
+                </li>
 
-                   <li class="sidebar-item {{ request()->routeIs('user.kontrak.*') ? 'active' : null }}">
-                       <a class="sidebar-link" href="{{ route('user.kontrak.index') }}">
-                           <i class="align-middle" data-feather="file"></i> <span class="align-middle">Kontrak</span>
-                       </a>
-                   </li>
+                <li class="sidebar-item {{ request()->routeIs('user.kontrak.*') ? 'active' : null }}">
+                    <a class="sidebar-link" href="{{ route('user.kontrak.index') }}">
+                        <i class="align-middle" data-feather="file"></i> <span class="align-middle">Kontrak</span>
+                    </a>
+                </li>
 
-                   <li class="sidebar-item {{ request()->routeIs('user.kinerja.*') ? 'active' : null }}">
-                       <a class="sidebar-link" href="{{ route('user.kinerja.index') }}">
-                           <i class="align-middle" data-feather="user-plus"></i> <span class="align-middle">Aktifitas </span>
-                       </a>
-                   </li>
+                <li class="sidebar-item {{ request()->routeIs('user.kinerja.*') ? 'active' : null }}">
+                    <a class="sidebar-link" href="{{ route('user.kinerja.index') }}">
+                        <i class="align-middle" data-feather="user-plus"></i> <span class="align-middle">Aktifitas </span>
+                    </a>
+                </li>
 
-                   <li class="sidebar-item {{ request()->routeIs('user.tugas.*') ? 'active' : null }}">
-                       <a class="sidebar-link" href="{{ route('user.tugas.index') }}">
-                           <i class="align-middle" data-feather="clipboard"></i> <span class="align-middle">List Tugas</span>
-                       </a>
-                   </li>
-                   <li class="sidebar-header">
-                       Pengajuan
-                   </li>
-                   <li class="sidebar-item {{ request()->routeIs('user.cuti.*') ? 'active' : null }}">
-                       <a class="sidebar-link" href="{{ route('user.cuti.index') }}">
-                           <i class="align-middle" data-feather="layers"></i> <span class="align-middle">Pengajuan Cuti</span>
-                       </a>
-                   </li>
-                   <li class="sidebar-item {{ request()->routeIs('user.dinas.*') ? 'active' : null }}">
-                       <a class="sidebar-link" href="{{ route('user.dinas.index') }}">
-                           <i class="align-middle" data-feather="feather"></i> <span class="align-middle">Pengajuan Dinas</span>
-                       </a>
-                   </li>
-               </ul>
+                <li class="sidebar-item {{ request()->routeIs('user.tugas.*') ? 'active' : null }}">
+                    <a class="sidebar-link" href="{{ route('user.tugas.index') }}">
+                        <i class="align-middle" data-feather="clipboard"></i> <span class="align-middle">List Tugas</span>
+                    </a>
+                </li>
+                <li class="sidebar-header">
+                    Pengajuan
+                </li>
+                <li class="sidebar-item {{ request()->routeIs('user.cuti.*') ? 'active' : null }}">
+                    <a class="sidebar-link" href="{{ route('user.cuti.index') }}">
+                        <i class="align-middle" data-feather="layers"></i> <span class="align-middle">Pengajuan Cuti</span>
+                    </a>
+                </li>
+                <li class="sidebar-item {{ request()->routeIs('user.dinas.*') ? 'active' : null }}">
+                    <a class="sidebar-link" href="{{ route('user.dinas.index') }}">
+                        <i class="align-middle" data-feather="feather"></i> <span class="align-middle">Pengajuan Dinas</span>
+                    </a>
+                </li>
+            </ul>
+           @endif
            @endif

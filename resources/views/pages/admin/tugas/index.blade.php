@@ -48,7 +48,7 @@
                     <div class="col-md-auto">
                         <div class="row no-gutters mb-4 mt-3">
                             <div class="col-md-auto">
-                                <a href="{{ route('admin.tugas.exportlist', ['tanggal' => @$_GET['tanggal']]) }}" target="_blank" class="btn btn-outline-success btn-sm">
+                                <a href="{{ route('admin.tugas.exportlist', ['tanggal' => @$_GET['tanggal'], 'show' => @$_GET['show']]) }}" target="_blank" class="btn btn-outline-success btn-sm">
                                     <i class="fas fa-file-export mr-1"></i>Export
                                 </a>
                             </div>

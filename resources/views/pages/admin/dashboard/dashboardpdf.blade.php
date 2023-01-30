@@ -44,12 +44,12 @@
 
     <div class="card mt-3">
         <div class="card-body">
-            <span>List Karyawan Belum Absen <b>
-                    @if (isset($_GET['date']))
+            <span>List Karyawan Yang Belum Mengerjakan Tugas <b>
+                    (@if (isset($_GET['date']))
                         {{ Carbon\Carbon::parse($_GET['date'])->isoFormat('MMMM Y') }}
                     @else
                         {{ Carbon\Carbon::today()->isoFormat('MMMM Y') }}
-                    @endif
+                    @endif)
                 </b>
             </span>
             <div class="table-responsive">
