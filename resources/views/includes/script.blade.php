@@ -8,6 +8,14 @@
     <script src="{{ asset('vendor/datepicker3/datepicker3.min.js') }}"></script>
 
     <script>
+        $('body').on('hidden.bs.modal', function() {
+            if ($('.modal.show').length > 0) {
+                $('body').addClass('modal-open');
+            }
+        });
+    </script>
+    
+    <script>
         const deleteConfirmation = (url, text = null) => {
             let setting = [`@csrf`, `@method('DELETE')`];
             let form = document.createElement('form');

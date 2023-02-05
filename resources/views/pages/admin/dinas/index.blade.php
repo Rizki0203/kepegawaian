@@ -75,7 +75,8 @@
                                 <th>Nama</th>
                                 <th>Kepada Yth.</th>
                                 <th>Perihal</th>
-                                <th>Keperluan Dinas</th>
+                                <th>Tujuan Dinas</th>
+                                <th>Tanggal</th>
                                 <th>Jmlh Lampiran</th>
                                 <th>Alasan</th>
                                 <th>Tgl Dibuat</th>
@@ -88,7 +89,7 @@
                                         @if ($item->is_approved == 0)
                                             <button type="button" class="btn btn-outline-success btn-sm" onclick="approveConfirmation('{{ route('admin.dinas.approve', [$item->id]) }}')" data-bs-toggle="tooltip" title="Klik Untuk Mengapprove Data">
                                                 Approve</button>
-                                            <button type="button" class="btn btn-outline-danger btn-sm" onclick="rejectConfirmation('{{ route('admin.dinas.reject', [$item->id]) }}')" data-bs-toggle="tooltip" title="Klik Untuk Mereject Data">
+                                            <button type="button" class="btn btn-outline-danger btn-sm" data-url="{{ route('admin.dinas.reject', $item->id) }}" data-bs-toggle="modal" data-bs-target=".modalOpen" data-title="Masukkan Alasan Reject">
                                                 <i data-feather="minus-circle"></i></button>
                                         @elseif($item->is_approved == 1)
                                             <a href="{{ route('admin.dinas.export', $item->id) }}" target="_blank" class="btn btn-outline-primary btn-sm" data-bs-toggle="tooltip" title="Klik Untuk Mendownload Data">
@@ -97,6 +98,8 @@
                                         @else
                                             <button type="button" class="btn btn-outline-danger btn-sm" onclick="deleteConfirmation('{{ route('admin.dinas.destroy', [$item->id]) }}')" data-bs-toggle="tooltip" title="Klik Untuk Menghapus Data">
                                                 <i data-feather="trash" class="btn-icon-wrapper d-inline"></i></button>
+                                                <button type="button" class="btn btn-outline-danger btn-sm" data-url="{{ route('admin.dinas.alasan-reject', $item->id) }}" data-bs-toggle="modal" data-bs-target=".modalOpen" data-title="Alasan Reject">
+                                                    <small>Alasan Reject</small></button>
                                         @endif
                                     </td>
                                     <td>
@@ -112,6 +115,7 @@
                                     <td>{{ $item->tujuan }}</td>
                                     <td>{{ $item->perihal }}</td>
                                     <td>{{ $item->jenis_surat_dinas }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($item->mulai_dinas)->isoFormat('DD MMM Y') }} - {{ \Carbon\Carbon::parse($item->berakhir_dinas)->isoFormat('DD MMM Y') }}</td>
                                     <td>{{ $item->dinas_lampiran_count }} Lampiran</td>
                                     <td>{{ $item->alasan }}</td>
                                     <td>{{ \Carbon\Carbon::parse($item->created_at)->isoFormat('DD MMM Y') }}</td>
@@ -130,4 +134,6 @@
             </div>
             <x-pagination :pagination="$dinas" />
         </div>
+
+        <x-modal class="modal-lg"/>
     @endsection

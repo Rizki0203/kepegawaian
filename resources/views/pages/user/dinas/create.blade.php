@@ -33,8 +33,26 @@
 
                     <div class="col-md-12 mb-3">
                         <label class="form-label fw-bold">Perihal</label>
-                        <input name="perihal" placeholder="Masukkan Perihal" type="text" class="form-control @error('perihal') is-invalid @enderror" value="{{ old('perihal') }}" required>
+                        <input name="perihal" placeholder="Masukkan Perihal (contoh: Perpindahan tempat dinas)" type="text" class="form-control @error('perihal') is-invalid @enderror" value="{{ old('perihal') }}" required>
                         @error('perihal')
+                            <span class="invalid-feedback" role="alert">
+                                {{ $message }}
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-bold">Tanggal Mulai</label>
+                        <input name="mulai" placeholder="Tanggal Mulai" data-toggle="datepicker3" type="text" class="form-control @error('mulai') is-invalid @enderror" value="{{ old('mulai') }}" required>
+                        @error('mulai')
+                            <span class="invalid-feedback" role="alert">
+                                {{ $message }}
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold">Sampai tanggal</label>
+                        <input name="berakhir" placeholder="---" data-toggle="datepicker3" type="text" class="form-control @error('berakhir') is-invalid @enderror" value="{{ old('berakhir') }}" required>
+                        @error('berakhir')
                             <span class="invalid-feedback" role="alert">
                                 {{ $message }}
                             </span>
@@ -50,7 +68,6 @@
                             </span>
                         @enderror
                     </div>
-
                     <div class="col-md-12">
                         <label class="form-label fw-bold" for="alasan">Alasan</label>
                         <textarea name="alasan" id="alasan" cols="30" rows="2" class="form-control @error('alasan') is-invalid @enderror" placeholder="Masukkan alasan">{{ old('alasan') }}</textarea>

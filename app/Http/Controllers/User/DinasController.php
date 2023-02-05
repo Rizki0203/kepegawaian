@@ -55,11 +55,13 @@ class DinasController extends Controller
 
         // STORE
         $dinas = Dinas::create([
-            'user_id' => $request->user_id,
-            'tujuan' => $request->tujuan,
-            'perihal' => $request->perihal,
+            'user_id'           => $request->user_id,
+            'tujuan'            => $request->tujuan,
+            'perihal'           => $request->perihal,
+            'mulai_dinas'       => $request->mulai,
+            'berakhir_dinas'    => $request->berakhir,
             'jenis_surat_dinas' => $request->jenis_surat_dinas,
-            'alasan' => $request->alasan,
+            'alasan'            => $request->alasan,
         ]);
 
         $lampirans = $request->input('lampiran');
@@ -176,4 +178,6 @@ class DinasController extends Controller
             return redirect()->route('user.dinas.index');
         }
     }
+
+    
 }

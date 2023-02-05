@@ -33,6 +33,25 @@
                             </span>
                         @enderror
                     </div>
+                    <div class="col-md-12 mt-3">
+                        <label class="form-label fw-bold">Jenis Cuti</label>
+                        <select name="jenis_cuti" class="select2 form-control bg-white" required>
+                            <option disabled selected>Jenis Cuti</option>
+                            
+                                <option value="Cuti Keluarga" {{ old('jenis_cuti', $cuti->jenis_cuti) == 'Cuti Keluarga' ? 'selected' : '' }}>Cuti Keluarga</option>
+                                <option value="Cuti Ibadah" {{ old('jenis_cuti', $cuti->jenis_cuti) == 'Cuti Ibadah' ? 'selected' : '' }}>Cuti Ibadah</option>
+                                <option value="Cuti Karena Kesehatan" {{ old('jenis_cuti', $cuti->jenis_cuti) == 'Cuti Karena Kesehatan' ? 'selected' : '' }}>Cuti Karena Kesehatan</option>
+                                <option value="Cuti Melahirkan" {{ old('jenis_cuti', $cuti->jenis_cuti) == 'Cuti Melahirkan' ? 'selected' : '' }}>Cuti Melahirkan</option>
+                                <option value="Cuti Studi" {{ old('jenis_cuti', $cuti->jenis_cuti) == 'Cuti Studi' ? 'selected' : '' }}>Cuti Studi</option>
+                                <option value="Cuti untuk Kegiatan Sosial" {{ old('jenis_cuti', $cuti->jenis_cuti) == 'Cuti untuk Kegiatan Sosial' ? 'selected' : '' }}>Cuti untuk Kegiatan Sosial</option>
+                                <option value="Cuti Bersama" {{ old('jenis_cuti', $cuti->jenis_cuti) == 'Cuti Bersama' ? 'selected' : '' }}>Cuti Bersama</option>
+                        </select>
+                        @if ($errors->has('jenis_cuti'))
+                            <span class="text-danger">
+                                {{ $errors->first('jenis_cuti') }}
+                            </span>
+                        @endif
+                    </div>
                     <div class="col-md-12">
                         <label class="form-label fw-bold mt-3" for="keterangan">Keterangan</label>
 

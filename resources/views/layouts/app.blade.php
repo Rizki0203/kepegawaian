@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -36,10 +36,11 @@
 
         <div class="main">
             @include('includes.navbar')
-
+            
             <main class="content">
                 <div class="container-fluid p-0">
                     <x-alerts />
+                    
                     @yield('content')
 
                 </div>
@@ -54,7 +55,8 @@
             </footer>
         </div>
     </div>
-
+    
+    @stack('modal-section')
     @include('includes.script')
     @stack('after-scripts')
 

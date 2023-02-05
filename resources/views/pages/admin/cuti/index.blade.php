@@ -2,6 +2,7 @@
 @section('title', 'Pengajuan Cuti')
 
 @section('content')
+
     <h1 class="h3 mb-3"><strong>Halaman</strong> Pengajuan Cuti</h1>
 
     <div class="card mb-5">
@@ -75,6 +76,7 @@
                                 <th>Tanggal</th>
                                 <th>Mulai Cuti</th>
                                 <th>Berakhir Cuti</th>
+                                <th>Jenis Cuti</th>
                                 <th>Keterangan</th>
                                 <th>Hari</th>
                                 <th>Status</th>
@@ -87,7 +89,7 @@
                                         @if ($item->is_approved == 0)
                                             <button type="button" class="btn btn-outline-success btn-sm" onclick="approveConfirmation('{{ route('admin.cuti.approve', [$item->id]) }}')" data-bs-toggle="tooltip" title="Klik Untuk Mengapprove Data">
                                                 Approve</button>
-                                            <button type="button" class="btn btn-outline-danger btn-sm" onclick="rejectConfirmation('{{ route('admin.cuti.reject', [$item->id]) }}')" data-bs-toggle="tooltip" title="Klik Untuk Mereject Data">
+                                            <button type="button" class="btn btn-outline-danger btn-sm" data-url="{{ route('admin.cuti.reject', $item->id) }}" data-bs-toggle="modal" data-bs-target=".modalOpen" data-title="Masukkan Alasan Reject">
                                                 <i data-feather="minus-circle"></i></button>
                                         @elseif($item->is_approved == 1)
                                             <a href="{{ route('admin.cuti.export', $item->id) }}" target="_blank" class="btn btn-outline-primary btn-sm" data-bs-toggle="tooltip" title="Klik Untuk Mendownload Data">
@@ -96,12 +98,15 @@
                                         @else
                                             <button type="button" class="btn btn-outline-danger btn-sm" onclick="deleteConfirmation('{{ route('admin.cuti.destroy', [$item->id]) }}')" data-bs-toggle="tooltip" title="Klik Untuk Menghapus Data">
                                                 <i data-feather="trash" class="btn-icon-wrapper d-inline"></i></button>
+                                                <button type="button" class="btn btn-outline-danger btn-sm" data-url="{{ route('admin.cuti.alasan-reject', $item->id) }}" data-bs-toggle="modal" data-bs-target=".modalOpen" data-title="Alasan Reject">
+                                                    <small>Alasan Reject</small></button>
                                         @endif
                                     </td>
                                     <td>{{ $item->user->name }}</td>
                                     <td>{{ \Carbon\Carbon::parse($item->created_at)->isoFormat('DD MMM Y') }}</td>
                                     <td>{{ $item->mulai_cuti }}</td>
                                     <td>{{ $item->berakhir_cuti }}</td>
+                                    <td>{{ $item->jenis_cuti }}</td>
                                     <td>{{ $item->keterangan }}</td>
                                     <td>
                                         {{ \Carbon\Carbon::parse($item->mulai_cuti)->diffInDays($item->berakhir_cuti) + 1 }} Hari
@@ -130,4 +135,5 @@
             </div>
             <x-pagination :pagination="$cuti" />
         </div>
+        <x-modal class="modal-lg" />
     @endsection

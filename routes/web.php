@@ -51,8 +51,10 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
             Route::get('cuti/exportlist', [AdminCutiController::class, 'exportPDFList'])->name('cuti.exportlist');
             Route::resource('cuti', AdminCutiController::class);
             Route::put('cuti/approve/{id}', [AdminCutiController::class, 'approve'])->name('cuti.approve');
-            Route::put('cuti/reject/{id}', [AdminCutiController::class, 'reject'])->name('cuti.reject');
+            Route::get('cuti/reject/{id}', [AdminCutiController::class, 'rejectCuti'])->name('cuti.reject');
+            Route::put('cuti/reject/{id}', [AdminCutiController::class, 'rejectUpdateCuti'])->name('cuti.reject.update');
             Route::get('cuti/export/{id}', [AdminCutiController::class, 'exportPDF'])->name('cuti.export');
+            Route::get('cuti/{id}/alasan-reject', [AdminCutiController::class, 'alasanReject'])->name('cuti.alasan-reject');
 
             Route::resource('kontrak', AdminKontrakController::class);
             Route::get('kontrak/export/{id}', [AdminKontrakController::class, 'exportPDF'])->name('kontrak.export');
@@ -68,8 +70,10 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
             Route::get('dinas/exportlist', [AdminDinasController::class, 'exportPDFList'])->name('dinas.exportlist');
             Route::resource('dinas', AdminDinasController::class);
             Route::put('dinas/approve/{id}', [AdminDinasController::class, 'approve'])->name('dinas.approve');
-            Route::put('dinas/reject/{id}', [AdminDinasController::class, 'reject'])->name('dinas.reject');
+            Route::get('dinas/reject/{id}', [AdminDinasController::class, 'rejectDinas'])->name('dinas.reject');
+            Route::put('dinas/reject/{id}', [AdminDinasController::class, 'rejectUpdateDinas'])->name('dinas.reject.update');
             Route::get('dinas/export/{id}', [AdminDinasController::class, 'exportPDF'])->name('dinas.export');
+            Route::get('dinas/{id}/alasan-reject', [AdminDinasController::class, 'alasanReject'])->name('dinas.alasan-reject');
         });
     });
     // End middleware Admin

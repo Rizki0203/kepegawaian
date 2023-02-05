@@ -97,7 +97,7 @@ class DinasController extends Controller
 
         if ($dinas) {
             Alert::success('Berhasil', 'Data berhasil dihapus');
-            return redirect()->route('user.dinas.index');
+            return redirect()->route('admin.dinas.index');
         } else {
             Alert::error('Gagal', 'Data gagal dihapus');
             return redirect()->route('admin.dinas.index');
@@ -139,5 +139,32 @@ class DinasController extends Controller
         $dinas = Dinas::withcount('dinas_lampiran')->latest()->filter($params)->paginate($params['show'] ?? 10);
 
         return view('pages.admin.dinas.dinaspdflist', compact('dinas', 'user'));
+    }
+
+    public function rejectDinas($id)
+    {
+        $dinas = Dinas::findOrFail($id);
+
+        return view('pages.admin.dinas.reject-modal', compact('dinas'));
+    }
+
+    public function rejectUpdateDinas(Request $request, $id)
+    {
+        $dinas = Dinas::findOrFail($id);
+
+        $dinas->update([
+            'is_approved' => '2',
+            'alasan_reject' => $request->alasan_reject,
+        ]);
+
+        Alert::success('Success', 'Data berhasil di reject');
+        return redirect()->route('admin.dinas.index');
+    }
+
+    public function alasanReject($id)
+    {
+        $dinas = Dinas::find($id);
+
+        return view('pages.admin.dinas.alasan-reject', compact('dinas'));
     }
 }

@@ -145,6 +145,7 @@
                     <th>Tanggal Buat</th>
                     <th>Mulai Cuti</th>
                     <th>Berakhir Cuti</th>
+                    <th>Jenis Cuti</th>
                     <th>Keterangan</th>
                     <th>Hari</th>
                     <th>Status</th>
@@ -158,6 +159,7 @@
                         <td>{{ \Carbon\Carbon::parse($item->created_at)->isoFormat('DD MMM Y') }}</td>
                         <td>{{ \Carbon\Carbon::parse($item->mulai_cuti)->isoFormat('DD MMMM Y') }}</td>
                         <td>{{ \Carbon\Carbon::parse($item->berakhir_cuti)->isoFormat('DD MMMM Y') }}</td>
+                        <td>{{ $item->jenis_cuti }}</td>
                         <td>{{ $item->keterangan }}</td>
                         <td>
                             {{ \Carbon\Carbon::parse($item->mulai_cuti)->diffInDays($item->berakhir_cuti) + 1 }} Hari

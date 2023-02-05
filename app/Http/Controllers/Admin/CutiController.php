@@ -129,4 +129,32 @@ class CutiController extends Controller
 
         return view('pages.admin.cuti.cutipdflist', compact('cuti', 'user'));
     }
+
+    public function rejectCuti($id)
+    {
+        $cuti = Cuti::findOrFail($id);
+
+        return view('pages.admin.cuti.reject-modal', compact('cuti'));
+    }
+
+    public function rejectUpdateCuti(Request $request, $id)
+    {
+        $cuti = Cuti::findOrFail($id);
+
+        $cuti->update([
+            'is_approved' => '2',
+            'alasan_reject' => $request->alasan_reject,
+        ]);
+
+        Alert::success('Success', 'Data berhasil di reject');
+        return redirect()->route('admin.cuti.index');
+    }
+
+    public function alasanReject($id)
+    {
+        $cuti = Cuti::findOrFail($id);
+
+        return view('pages.admin.cuti.alasan-reject', compact('cuti'));
+    }
+    
 }

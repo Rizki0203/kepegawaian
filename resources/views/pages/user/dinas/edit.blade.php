@@ -42,6 +42,25 @@
                         @enderror
                     </div>
 
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-bold">Tanggal Mulai</label>
+                        <input name="mulai" placeholder="Tanggal Mulai" data-toggle="datepicker3" type="text" class="form-control @error('mulai') is-invalid @enderror" value="{{ old('mulai', $dinas->mulai) }}" required>
+                        @error('mulai')
+                            <span class="invalid-feedback" role="alert">
+                                {{ $message }}
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold">Sampai tanggal</label>
+                        <input name="berakhir" placeholder="---" data-toggle="datepicker3" type="text" class="form-control @error('berakhir') is-invalid @enderror" value="{{ old('berakhir', $dinas->berakhir) }}" required>
+                        @error('berakhir')
+                            <span class="invalid-feedback" role="alert">
+                                {{ $message }}
+                            </span>
+                        @enderror
+                    </div>
+
                     <div class="col-md-12 mb-3">
                         <label class="form-label fw-bold">Tujuan Pembuatan Surat</label>
                         <input name="jenis_surat_dinas" placeholder="Masukkan Tujuan Pembuatan Surat (contoh: Mutasi Tempat Kerja)" type="text" class="form-control @error('jenis_surat_dinas') is-invalid @enderror" value="{{ old('jenis_surat_dinas', $dinas->jenis_surat_dinas) }}" required>

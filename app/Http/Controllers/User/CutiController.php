@@ -44,6 +44,7 @@ class CutiController extends Controller
         $request->validate([
             'mulai_cuti' => 'required',
             'berakhir_cuti' => 'required',
+            'jenis_cuti' => 'required',
             'keterangan' => 'required',
         ]);
 
@@ -52,6 +53,7 @@ class CutiController extends Controller
             'user_id'       => auth()->user()->id,
             'mulai_cuti'    => $request->mulai_cuti,
             'berakhir_cuti' => $request->berakhir_cuti,
+            'jenis_cuti'    => $request->jenis_cuti,
             'keterangan'    => $request->keterangan,
         ]);
 
@@ -104,6 +106,7 @@ class CutiController extends Controller
         $request->validate([
             'mulai_cuti' => 'required',
             'berakhir_cuti' => 'required',
+            'jenis_cuti' => 'required',
             'keterangan' => 'required',
         ]);
 
@@ -111,6 +114,7 @@ class CutiController extends Controller
         $cuti->update([
             'mulai_cuti'    => $request->mulai_cuti,
             'berakhir_cuti' => $request->berakhir_cuti,
+            'jenis_cuti'    => $request->jenis_cuti,
             'keterangan'    => $request->keterangan,
         ]);
 

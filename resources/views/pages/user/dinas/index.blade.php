@@ -1,14 +1,14 @@
 @extends('layouts.app')
-@section('title', 'Pengajuan Dinas')
+@section('title', 'Pindah Dinas')
 
 @section('content')
-    <h1 class="h3 mb-3"><strong>Halaman</strong> Pengajuan Dinas</h1>
+    <h1 class="h3 mb-3"><strong>Halaman</strong> Pindah Dinas</h1>
 
     <div class="card mb-5">
         <div class="card-header">
             <div class="row">
                 <div class="col-md-6">
-                    Pengajuan Dinas
+                    Pindah Dinas
                 </div>
                 <div class="col-md-6 text-end">
                     <a href="{{ route('user.dinas.create') }}" class="btn btn-sm btn-primary">
@@ -37,7 +37,8 @@
                                 <th>Nama</th>
                                 <th>Kepada Yth.</th>
                                 <th>Perihal</th>
-                                <th>Keperluan Dinas</th>
+                                <th>Tujuan Dinas</th>
+                                <th>Tanggal</th>
                                 <th>Jmlh Lampiran</th>
                                 <th>Alasan</th>
                                 <th>Tgl Dibuat</th>
@@ -59,7 +60,9 @@
                                         @else
                                             <button type="button" class="btn btn-outline-danger btn-sm" onclick="deleteConfirmation('{{ route('user.dinas.destroy', [$item->id]) }}')" data-bs-toggle="tooltip" title="Klik Untuk Menghapus Data">
                                                 <i data-feather="trash" class="btn-icon-wrapper d-inline"></i></button>
-                                        @endif
+                                                <button type="button" class="btn btn-outline-danger btn-sm" data-url="{{ route('admin.dinas.alasan-reject', $item->id) }}" data-bs-toggle="modal" data-bs-target=".modalOpen" data-title="Alasan Reject">
+                                                    <small>Alasan Reject</small></button>
+                                                @endif
                                     </td>
                                     <td>
                                         @if ($item->is_approved == 0)
@@ -74,6 +77,7 @@
                                     <td>{{ $item->tujuan }}</td>
                                     <td>{{ $item->perihal }}</td>
                                     <td>{{ $item->jenis_surat_dinas }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($item->mulai_dinas)->isoFormat('DD MMM Y') }} - {{ \Carbon\Carbon::parse($item->berakhir_dinas)->isoFormat('DD MMM Y') }}</td>
                                     <td>{{ $item->dinas_lampiran_count }} Lampiran</td>
                                     <td>{{ $item->alasan }}</td>
                                     <td>{{ \Carbon\Carbon::parse($item->created_at)->isoFormat('DD MMM Y') }}</td>
@@ -92,4 +96,5 @@
             </div>
             <x-pagination :pagination="$dinas" />
         </div>
+        <x-modal class="modal-lg" />
     @endsection

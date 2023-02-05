@@ -228,8 +228,11 @@
                     </table>
                     <br />
 
-                    <div>Mengajukan permohonan {{ $dinas->jenis_surat_dinas }}, dengan alasan :</d>
-                        <div>{{ $dinas->alasan }}.</div>
+                    <d>Mengajukan permohonan {{ $dinas->jenis_surat_dinas }}, dengan alasan :</d>
+                        
+                        <div>{{ $dinas->alasan }}.<br/>
+                        Dan akan dilakukan pada tanggal : {{ \Carbon\Carbon::parse($dinas->mulai_dinas)->isoFormat('DD MMMM Y') }} - {{ \Carbon\Carbon::parse($dinas->berakhir_dinas)->isoFormat('DD MMMM Y') }}
+                        </div>
                         <div>Sebagai bahan pertimbangan saya lampirkan :</div>
                         <ol>
                             @foreach ($dinas->dinas_lampiran as $item)

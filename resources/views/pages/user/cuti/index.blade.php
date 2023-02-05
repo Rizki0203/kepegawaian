@@ -36,6 +36,7 @@
                                 <th>Tanggal</th>
                                 <th>Mulai Cuti</th>
                                 <th>Berakhir Cuti</th>
+                                <th>Jenis Cuti</th>
                                 <th>Keterangan</th>
                                 <th>Status Hari</th>
                                 <th>Status</th>
@@ -49,6 +50,7 @@
                                     <td>{{ \Carbon\Carbon::parse($item->created_at)->isoFormat('DD MMM Y') }}</td>
                                     <td>{{ $item->mulai_cuti }}</td>
                                     <td>{{ $item->berakhir_cuti }}</td>
+                                    <td>{{ $item->jenis_cuti }}</td>
                                     <td>{{ $item->keterangan }}</td>
                                     <td>
                                         {{ \Carbon\Carbon::parse($item->mulai_cuti)->diffInDays($item->berakhir_cuti) + 1 }} Hari
@@ -79,7 +81,9 @@
                                         <td>
                                             <button type="button" class="btn btn-outline-danger btn-sm" onclick="deleteConfirmation('{{ route('user.cuti.destroy', [$item->id]) }}')" data-bs-toggle="tooltip" title="Klik Untuk Menghapus Data">
                                                 <i data-feather="trash" class="btn-icon-wrapper d-inline"></i></button>
-                                        </td>
+                                                <button type="button" class="btn btn-outline-danger btn-sm" data-url="{{ route('admin.cuti.alasan-reject', $item->id) }}" data-bs-toggle="modal" data-bs-target=".modalOpen" data-title="Alasan Reject">
+                                                    <small>Alasan Reject</small></button>
+                                            </td>
                                     @endif
 
                                 </tr>
@@ -96,4 +100,5 @@
             </div>
             <x-pagination :pagination="$cuti" />
         </div>
+        <x-modal class="modal-lg" />
     @endsection

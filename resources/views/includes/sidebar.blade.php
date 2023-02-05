@@ -37,7 +37,7 @@
                    </li>
                    <li class="sidebar-item {{ request()->routeIs('admin.dinas.*') ? 'active' : null }}">
                        <a class="sidebar-link" href="{{ route('admin.dinas.index') }}">
-                           <i class="align-middle" data-feather="feather"></i> <span class="align-middle">Pengajuan Dinas</span>
+                           <i class="align-middle" data-feather="feather"></i> <span class="align-middle">Pindah Dinas</span>
                        </a>
                    </li>
                    <li class="sidebar-header">
@@ -99,7 +99,7 @@
                 </li>
                 <li class="sidebar-item {{ request()->routeIs('user.dinas.*') ? 'active' : null }}">
                     <a class="sidebar-link" href="{{ route('user.dinas.index') }}">
-                        <i class="align-middle" data-feather="feather"></i> <span class="align-middle">Pengajuan Dinas</span>
+                        <i class="align-middle" data-feather="feather"></i> <span class="align-middle">Pindah Dinas</span>
                     </a>
                 </li>
             </ul>
